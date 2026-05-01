@@ -75,17 +75,18 @@ void main(void) {
         );
         out_FragColor = vec4(leftM * leftColor.rgb + rightM * rightColor.rgb, 1.0);
     } else if(optimizedAnaglyph) {
+        // Dubois least-squares projection (red/cyan glasses)
         leftM = mat3(
-            0.0, 0.0, 0.0,
-            0.7, 0.0, 0.0,
-            0.3, 0.0, 0.0
+             0.437, -0.062, -0.048,
+             0.449, -0.062, -0.050,
+             0.164, -0.024, -0.017
         );
         rightM = mat3(
-            0.0, 0.0, 0.0,
-            0.0, 1.0, 0.0,
-            0.0, 0.0, 1.0
+            -0.011,  0.377, -0.026,
+            -0.032,  0.761, -0.093,
+            -0.007,  0.009,  1.234
         );
-        out_FragColor = vec4(leftM * leftColor.rgb + rightM * rightColor.rgb, 1.0);
+        out_FragColor = vec4(clamp(leftM * leftColor.rgb + rightM * rightColor.rgb, 0.0, 1.0), 1.0);
     } else {        
         out_FragColor = vec4(leftColor.r, leftColor.g, leftColor.b, 1.0);
     }

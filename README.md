@@ -2,7 +2,7 @@
 
 A real-time video processing and anaglyph generation tool built with Three.js and WebGL 2 / GLSL 3. Implements GPU-accelerated image filters on live video frames and composites stereoscopic anaglyph images — all in the browser with no backend.
 
-**Live demo:** https://glsl-anaglyph.surge.sh
+**Live demo:** https://ossama971.github.io/GLSL-Anaglyph-Processor/
 
 ---
 
